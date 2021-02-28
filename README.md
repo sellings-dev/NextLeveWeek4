@@ -75,7 +75,7 @@ A repository for the NPS system developed during the Node.js path of RocketSeat'
   - Response:
     - `201` -> surveyUser json
 
-- GET `/nps` : Creates a survey
+- GET `/nps` : Shows the NPS result of a survey
   - Request:
     - `surveyId`
   - Response:
