@@ -7,16 +7,30 @@ A repository for the NPS system developed during the Node.js path of RocketSeat'
 
 #### You are able to register users to whom different surveys may be sent through email and you can get info about the results of that specific survey.
 
+## How to run the app
+
+#### First, clone the repository with:
+
+`git clone https://github.com/sellings-dev/NextLevelWeek4.git`
+
+#### Install the dependencies with:
+
+`npm install` or `yarn install`
+
+#### Run the following script:
+
+`npm run dev` or `yarn dev`
+
 ## Dependencies
 
-#### The main dependencies of this project are:
+#### The main dependencies of this project (linked to their documentations) are:
 
-- Express: used for running the server and routing the api
-- Typeorm: used for building database migrations and repositories
-- Jest: used for automated testing of system features
-- Yup: for validation of input data
-- Nodemailer: used for sending emails
-- Handlebars: used for templating the emails
+- [Express](https://expressjs.com/): used for running the server and routing the api
+- [Typeorm](https://typeorm.io/#/): used for building database migrations and repositories
+- [Jest](https://jestjs.io/): used for automated testing of system features
+- [Yup](https://www.npmjs.com/package/yup?activeTab=readme): for validation of input data
+- [Nodemailer](https://nodemailer.com/about/): used for sending emails
+- [Handlebars](https://handlebarsjs.com/): used for templating the emails
 
 ## `.env` Structure
 
