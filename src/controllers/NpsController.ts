@@ -12,7 +12,7 @@ class NpsController{
       value: Not(IsNull())
     })
 
-    const detractor = surveyUser.filter(
+    const detractors = surveyUser.filter(
       survey => survey.value >= 0 && survey.value <= 6 
     ).length; 
 
@@ -26,14 +26,40 @@ class NpsController{
 
     const totalAnswers = surveyUser.length;
     
-    const calculate = Number(((( promoters - detractor ) / totalAnswers) * 100).toFixed(2));
+    const calculate = Number(((( promoters - detractors ) / totalAnswers) * 100).toFixed(2));
+
+    let message = "";
+
+    const goalNps = Number(process.env.GOAL_NPS);
+
+    if(calculate >= goalNps){
+      let limit = calculate;
+      let i = 1;
+      for(i; limit >= goalNps; i++){
+        limit = Number(((( promoters - detractors - i ) / totalAnswers) * 100).toFixed(2));
+      }
+      limit = calculate;
+      let j = 1;
+      for(j; limit >= goalNps; i++){
+        limit = Number(((( promoters - detractors) / (totalAnswers + j)) * 100).toFixed(2));
+      }
+      message = "Muito bom, estamos dentro da meta, mas cuidado,"
+                + "mais " + i + "respostas defratoras ou" + j + 
+                "respostas passivas nos retirarão da meta desejada";
+    } else {
+      const goalPromoter = Math.ceil(Number(((goalNps/100)*totalAnswers) + detractors));
+      message = "Ainda não chegamos lá, mas mais "
+                 + (goalPromoter - promoters) + 
+                " respostas promotoras e conseguiremos!";
+    }
 
     return res.json({
-      detractor,
+      detractors,
       promoters,
       passives,
       totalAnswers,
-      nps: calculate
+      nps: calculate,
+      message
     })
     
   }

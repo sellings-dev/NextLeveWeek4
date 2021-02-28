@@ -69,7 +69,7 @@ class SendMailController{
    variables.id = surveyUser.id;
    await SendMailService.execute(email, survey.title, variables, npsPath);
 
-   return res.json(surveyUser);
+   return res.status(201).json(surveyUser);
  }
 }
 
